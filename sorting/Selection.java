@@ -2,7 +2,7 @@ package sorting;
 
 import java.util.Scanner;
 
-public class SelectionSort {
+public class Selection {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -13,25 +13,28 @@ public class SelectionSort {
 		for (int i = 0; i < len; i++) {
 			a[i] = sc.nextInt();
 		}
-		int min,temp;
+		
+		len=a.length;int temp=0;
 		for(int i=0;i<len-1;i++) {
-			min=i;
+			int min=i;
 			for(int j=i+1;j<len;j++) {
-				if(a[min]>a[j]) {
+				if(a[j]<a[min]) {
 					min=j;
 				}
 			}
-			temp=a[min];
-			a[min]=a[i];
-			a[i]=temp;
+			temp=a[i];
+			a[i]=a[min];
+			a[min]=temp;
+			
 		}
-		
-		
+
+		System.out.println("The sorted array is : ");
 		for (int i : a) {
-			System.out.println(i + " ");
+			System.out.print(i + " ");
 		}
-		sc.close();
 		// 18 9 33 4 84 32
+		sc.close();
+
 	}
 
 }

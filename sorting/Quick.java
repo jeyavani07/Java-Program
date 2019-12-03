@@ -2,22 +2,24 @@ package sorting;
 
 import java.util.Scanner;
 
-public class QuickSort {
-	void sort(int a[], int l, int h) {
-		if (l < h) {
-			int j = partition(a, l, h);
+public class Quick {
+	public void sort(int a[], int l, int r) {
+		if (l < r) {
+			int j = partition(a, l, r);
 			sort(a, l, j);
-			sort(a, j + 1, h);
+			sort(a, j + 1, r);
+
 		}
 	}
 
-	int partition(int a[], int l, int h) {
-		int i = l, j = h + 1, temp;
+	public int partition(int a[], int l, int r) {
 		int pivot = a[l];
+		int i = l, j = r + 1, temp;
 		while (i < j) {
 			do {
 				i++;
 			} while (a[i] <= pivot);
+
 			do {
 				j--;
 			} while (a[j] > pivot);
@@ -26,6 +28,7 @@ public class QuickSort {
 				a[i] = a[j];
 				a[j] = temp;
 			}
+
 		}
 
 		temp = a[l];
@@ -36,6 +39,7 @@ public class QuickSort {
 	}
 
 	public static void main(String[] args) {
+		Quick q = new Quick();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the size of the array: ");
 		int len = sc.nextInt();
@@ -44,13 +48,16 @@ public class QuickSort {
 		for (int i = 0; i < len; i++) {
 			a[i] = sc.nextInt();
 		}
+		int n = len;
+		q.sort(a, 0, n - 1);
 
-		QuickSort q = new QuickSort();
-		q.sort(a, 0, a.length - 1);
+		System.out.println("The sorted array is : ");
 		for (int i : a) {
-			System.out.println(i + " ");
+			System.out.print(i + " ");
 		}
-		sc.close();
 		// 18 9 33 4 84 32
+		sc.close();
+
 	}
+
 }

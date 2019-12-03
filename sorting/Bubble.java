@@ -2,7 +2,7 @@ package sorting;
 
 import java.util.Scanner;
 
-public class SelectionSort {
+public class Bubble {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -13,25 +13,23 @@ public class SelectionSort {
 		for (int i = 0; i < len; i++) {
 			a[i] = sc.nextInt();
 		}
-		int min,temp;
+		int temp;
+		len=a.length;
 		for(int i=0;i<len-1;i++) {
-			min=i;
-			for(int j=i+1;j<len;j++) {
-				if(a[min]>a[j]) {
-					min=j;
+			for(int j=0;j<len-i-1;j++) {
+				if(a[j]>a[j+1]) {
+					temp=a[j];
+					a[j]=a[j+1];
+					a[j+1]=temp;
 				}
 			}
-			temp=a[min];
-			a[min]=a[i];
-			a[i]=temp;
 		}
 		
-		
-		for (int i : a) {
-			System.out.println(i + " ");
+		for(int p:a) {
+			System.out.print(p+" ");
 		}
-		sc.close();
 		// 18 9 33 4 84 32
+		sc.close();
 	}
 
 }
